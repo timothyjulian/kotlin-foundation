@@ -11,9 +11,17 @@ interface CourseRepository {
     }
 }
 
-class SqlCourseRepository : CourseRepository {
+interface Repository {
+    fun getAll() : Any
+}
+
+class SqlCourseRepository : CourseRepository, Repository {
     override fun getById(id: Int): Course {
         return Course(id, "Rust Programming", "Tim")
+    }
+
+    override fun getAll(): Any {
+        return 10
     }
 
 }
@@ -39,5 +47,4 @@ fun main() {
     val course2 = noSqlCourseRepository.getById(10)
     println("$course2")
     println(noSqlCourseRepository.save(course2))
-
 }
