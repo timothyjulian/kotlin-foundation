@@ -37,6 +37,26 @@ class NoSqlCourseRepository : CourseRepository {
     }
 }
 
+interface A {
+    fun doSomething() {
+        println("doSomething in A")
+    }
+}
+
+interface B {
+    fun doSomething() {
+        println("doSomething in B")
+    }
+}
+
+class AB : A, B {
+    override fun doSomething() {
+        super<B>.doSomething()
+        super<A>.doSomething()
+    }
+
+}
+
 fun main() {
     val sqlCourseRepository = SqlCourseRepository()
     val course = sqlCourseRepository.getById(5)
@@ -47,4 +67,7 @@ fun main() {
     val course2 = noSqlCourseRepository.getById(10)
     println("$course2")
     println(noSqlCourseRepository.save(course2))
+
+    val ab = AB()
+    ab.doSomething()
 }
