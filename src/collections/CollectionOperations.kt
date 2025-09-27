@@ -33,7 +33,21 @@ fun main() {
 //    val exploreFlatMap = exploreFlatMap(courseList, KAFKA)
 //    println(exploreFlatMap)
 
-    exploreHashMap()
+//    exploreHashMap()
+    collectionsNullability()
+}
+
+fun collectionsNullability() {
+    var list : MutableList<String>? = null
+    list = mutableListOf();
+
+    list?.add("hehe")
+    list?.forEach { println("test $it") }
+
+    val list1: List<String?> = listOf("Hehe", null, "Hoho")
+    list1.forEach {
+        println("Lol ${it?.length}")
+    }
 }
 
 fun exploreHashMap() {
