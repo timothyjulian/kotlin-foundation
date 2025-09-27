@@ -1,5 +1,11 @@
 package collections
 
+/**
+ * Higher order function
+ */
+fun calculate(x: Int, y: Int, op : (x: Int, y: Int) -> Int) : Int {
+    return op(x, y)
+}
 
 fun main() {
     val addLambda = { x: Int -> x + x }
@@ -14,4 +20,10 @@ fun main() {
 
     val multiplyResult = multiplyLambda(2, 3)
     println("multiplyResult : $multiplyResult")
+
+    val calc = calculate(2, 3) { a, b -> a * b }
+    println("calc: $calc")
+
+    val add = calculate(2, 3) { a, b -> a + b }
+    println("add: $add")
 }
