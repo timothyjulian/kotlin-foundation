@@ -9,14 +9,14 @@ fun main() {
     checkType("DILIP")
 
     castNumber(1.0)
+    castNumber(1)
     castNumber(1.toDouble())
-
-
 }
 
 fun castNumber(any: Any) {
     when(any) {
-        any as Double -> println("Value is double")
+        any as? Double -> println("Value is double")
+        any as? Int -> println("Value is int")
     }
 }
 
